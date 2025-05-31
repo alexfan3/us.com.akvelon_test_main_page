@@ -63,12 +63,18 @@ public class MainPageButtonLinksTest {
     }
 
     @Owner("Oleksand Fedorenko")
-    @DisplayName("Сhecking the opening of the CV unloading form")
+    @DisplayName("Кирилиця Сhecking the opening of the CV unloading form")
     @Test
     void testOpenSendCVForm() {
         HeaderMenu steep = new HeaderMenu();
-        steep.clickForButtonSendCV()
-                .clickForButtonSendCV();
+        SelenideLogger.addListener("allure",new AllureSelenide());
+
+        step("Натиснути на кнопку", () -> {
+            steep.clickForButtonSendCV();
+        });
+        step("ще щось зробимо",()-> {
+            steep.clickForButtonSendCV();
+        });
     }
 
     @Owner("Oleksand Fedorenko")
