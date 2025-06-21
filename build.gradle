@@ -43,3 +43,9 @@ test {
     useJUnitPlatform()
     systemProperties(System.getProperties())
 }
+
+task mainPageTest (type: Test){
+    useJUnitPlatform {
+        includeTags("mainPage")
+    }
+}
