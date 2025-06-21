@@ -16,6 +16,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
+@Tag("mainPage")
 public class MainPageButtonLinksTest {
     @BeforeAll
     static void startsConfiguration() {
@@ -63,16 +64,16 @@ public class MainPageButtonLinksTest {
     }
 
     @Owner("Oleksand Fedorenko")
-    @DisplayName("Кирилиця Сhecking the opening of the CV unloading form")
+    @DisplayName("Кирилица Сhecking the opening of the CV unloading form")
     @Test
     void testOpenSendCVForm() {
         HeaderMenu steep = new HeaderMenu();
         SelenideLogger.addListener("allure",new AllureSelenide());
 
-        step("Натиснути на кнопку", () -> {
+        step("Нажать на кропку", () -> {
             steep.clickForButtonSendCV();
         });
-        step("ще щось зробимо",()-> {
+        step("нажать на еще одну",()-> {
             steep.clickForButtonSendCV();
         });
     }
@@ -193,13 +194,13 @@ public class MainPageButtonLinksTest {
     @DisplayName("checking the email button for the mailto attribute")
     @Test
     void testMailtoAttribute() {
-        step("Scroll page to footer menu", () -> {
+        step("Проскролить вниз", () -> {
             $("#footer-menu").scrollTo();
         });
-        step("checking the visible element", () -> {
+        step("Проверить, что елемент видимый", () -> {
             $(".site-footer__row .site-footer__email").shouldBe(visible);
         });
-        step("checking the element for the presence of the mailto attribute", () -> {
+        step("Выполнить проверку", () -> {
             $(".site-footer__row ").$("a[href='mailto:jobua@akvelon.com']").
                     shouldHave(attribute("href", "mailto:jobua@akvelon.com"));
         });

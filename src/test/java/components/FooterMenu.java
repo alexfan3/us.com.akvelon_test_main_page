@@ -5,6 +5,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 
 public class FooterMenu {
+
     public FooterMenu selectNamePagesInSiteNavigator(String namePages) {
         $("#footer-menu").scrollTo();
         $("#footer-menu").$$("ul li").findBy(text(namePages)).click();
