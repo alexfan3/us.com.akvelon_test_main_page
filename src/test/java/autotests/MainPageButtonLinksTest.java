@@ -10,7 +10,13 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import pages.home.BodyLinks;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -21,7 +27,38 @@ public class MainPageButtonLinksTest {
     @BeforeAll
     static void startsConfiguration() {
         Configuration.browserSize = "1920x1200";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        ChromeOptions options = new ChromeOptions();
+        options.setCapability("browserVersion", "128.0");
+        options.setCapability("selenoid:options", new HashMap<String, Object>() {{
+            /* How to add test badge */
+            put("name", "Test badge...");
+
+            /* How to set session timeout */
+            put("sessionTimeout", "15m");
+
+            /* How to set timezone */
+            put("env", new ArrayList<String>() {{
+                add("TZ=UTC");
+            }});
+
+            /* How to add "trash" button */
+            put("labels", new HashMap<String, Object>() {{
+                put("manual", "true");
+            }});
+
+            /* How to enable video recording */
+            put("enableVideo", true);
+        }});
+       // RemoteWebDriver driver = new RemoteWebDriver(new URL("https://selenoid.autotests.cloud/wd/hub"), options);
+
+
+
+
         Selenide.open("https://akvelon.com.ua/");
+
+
+
 
     }
 
