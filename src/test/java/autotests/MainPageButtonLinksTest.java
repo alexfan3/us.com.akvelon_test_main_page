@@ -46,6 +46,7 @@ public class MainPageButtonLinksTest {
             put("labels", new HashMap<String, Object>() {{
                 put("manual", "true");
             }});
+            put("enableVNC",true);
 
             /* How to enable video recording */
             put("enableVideo", true);
